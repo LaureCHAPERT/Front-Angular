@@ -21,6 +21,8 @@ export class UserListComponent implements OnInit {
         .subscribe(userList => this.userList = userList);
       console.log(this.userList);
 
+
+
   }
 
 }

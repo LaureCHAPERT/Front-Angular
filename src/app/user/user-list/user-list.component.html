@@ -1,8 +1,8 @@
   <table class="striped center" style="margin-left:5em">
     <thead>
       <tr>
-        <th>Username</th>
-        <th>Name</th>
+        <th>Nom</th>
+        <th>Prénom</th>
         <th>Mail</th>
         <th>Role</th>
         <th>Téléphone</th>
@@ -11,47 +11,16 @@
     </thead>
 
     <tbody>
-      <tr>
-        <td>Alvin</td>
-        <td>Eclair</td>
-        <td>alvin@gmail.com</td>
-        <td>ADMIN</td>
-        <td>0617525854</td>
+      <tr *ngFor="let user of userList">
+        <td>{{user.firstname}}</td>
+        <td>{{user.lastname}}</td>
+        <td>{{user.email}}</td>
+        <td><span *ngFor="let role of user.roles;">
+            {{role}}
+          </span></td>
+        <td>{{user.telephone}}</td>
         <td>
           <a class="btn blue lighten-1 " style="marginLeft:5px"> Editer </a>
-          <a class="btn blue lighten-1" style="marginLeft:5px"> Supprimer</a>
-        </td>
-      </tr>
-      <tr>
-        <td>Alan</td>
-        <td>Jellybean</td>
-        <td>alan@gmail.com</td>
-        <td>ADMIN</td>
-        <td>0617525854</td>
-        <td>
-          <a class="btn blue lighten-1 " style="marginLeft:5px"> Editer </a>
-          <a class="btn blue lighten-1" style="marginLeft:5px"> Supprimer</a>
-        </td>
-      </tr>
-      <tr>
-        <td>Jonathan</td>
-        <td>Lollipop</td>
-        <td>jonhatan@gmail.com</td>
-        <td>ADMIN</td>
-        <td>0617525854</td>
-        <td>
-          <a class="btn blue lighten-1 " style="marginLeft:5px"> Editer </a>
-          <a class="btn blue lighten-1" style="marginLeft:5px"> Supprimer</a>
-        </td>
-      </tr>
-      <tr>
-        <td>Jonathan</td>
-        <td>Lollipop</td>
-        <td>jonhatan@gmail.com</td>
-        <td>ADMIN</td>
-        <td>0617525854</td>
-        <td>
-          <a class="btn blue lighten-1 " style="marginLeft:5px;" routerLink="/edit/user/2"> Editer </a>
           <a class="btn blue lighten-1" style="marginLeft:5px"> Supprimer</a>
         </td>
       </tr>
