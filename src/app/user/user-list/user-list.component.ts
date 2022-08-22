@@ -21,8 +21,10 @@ export class UserListComponent implements OnInit {
         .subscribe(userList => this.userList = userList);
       console.log(this.userList);
 
+  }
 
-
+  goToEditUser(user: User) {
+    this.router.navigate(['/edit/user', user.id]);
   }
 
 }

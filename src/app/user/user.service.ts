@@ -13,11 +13,11 @@ export class UserService {
   constructor(private http:HttpClient) { }
 
   getUserList(): Observable<User[]>{
-    /* return POKEMONS;
+    /* return USER;
     la réponse contiendra un tableau
     en param on passe une URL
     avec pipe on passe les traitements que l'on veut faire
-      on log le pokémon
+      on log le user
       si y'a une erreur on log l'erreur et on retourne un [] vide
       pour éviter le crash de l'appli*/
       //tap = console.log pour un Observable
@@ -26,6 +26,13 @@ export class UserService {
       catchError((error)=>this.handleError(error,[]))
       )
   }
+  //quand on n'a pas d'utilisateur on renvoie undefined
+  getUserById(userId:number): Observable<User|undefined> {
+    return this.http.get<User>(`http://localhost:8000/api/user/${userId}`).pipe(
+      tap((response)=> this.log(response)),
+      catchError((error)=>this.handleError(error,undefined))
+      );
+ }
   private log(response: any) {
     console.table(response);
   }

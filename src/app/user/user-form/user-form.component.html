@@ -1,4 +1,4 @@
-<form>
+<form *ngIf="user" #userForm="ngForm">
   <div class="row">
     <div class="col s8 offset-s2">
       <div class="card-panel">
@@ -6,35 +6,73 @@
         <!-- User Firstname -->
         <div class="form-group">
           <label for="firstname">Prénom</label>
-          <input type="text" class="form-control" id="firstname" required pattern="^[a-zA-Z0-9àéèç]{1,25}$">
+          <input type="text" class="form-control" id="firstname" required pattern="^[a-zA-Z0-9àéèç]{1,30}$"
+            [(ngModel)]="user.firstname" name="firstname" #firstname="ngModel">
+        </div>
+        <!--
+            Si ce n'est pas modifié ou valide c'est caché
+             On utilise name.valid pour y ajouer une class css-->
+        <div [hidden]="firstname.valid || firstname.pristine" class="card-panel red accent-1">
+          Le prénom de l'utilisateur requis (1-30).
         </div>
 
 
-        <!-- User lasname -->
+        <!-- User lastname -->
         <div class="form-group">
           <label for="lastname">Nom de famille</label>
-          <input type="text" class="form-control" id="lastname" required pattern="^[0-9]{1,3}$">
+          <input type="text" class="form-control" id="lastname" required pattern="^[a-zA-Z0-9àéèç]{1,30}$"
+            [(ngModel)]="user.lastname" name="lastname" #lastname="ngModel">
+        </div>
+        <!--
+            Si ce n'est pas modifié ou valide c'est caché
+             On utilise name.valid pour y ajouer une class css-->
+        <div [hidden]="lastname.valid || lastname.pristine" class="card-panel red accent-1">
+          Le nom de l'utilisateur requis (1-30).
         </div>
 
         <!-- User phone -->
         <div class="form-group">
           <label for="phone">Téléphone</label>
-          <input type="number" class="form-control" id="phone" required pattern="^[0-9]{1,2}$">
+          <input type="number" class="form-control" id="phone" required pattern="^[0-9]{9}$"
+            [(ngModel)]="user.telephone" name="telephone" #telephone="ngModel">
+        </div>
+        <!--
+            Si ce n'est pas modifié ou valide c'est caché
+             On utilise name.valid pour y ajouer une class css-->
+        <div [hidden]="telephone.valid || telephone.pristine" class="card-panel red accent-1">
+          Le téléphone de l'utilisateur est requis et doit faire 10 caractères.
         </div>
 
-        <!-- User main -->
+        <!-- User mail -->
         <div class="form-group">
           <label for="phone">Mail</label>
-          <input type="text" class="form-control" id="mail" required pattern="^[0-9]{1,2}$">
+          <input type="text" class="form-control" id="mail" required pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+            [(ngModel)]="user.email" name="email" #email="ngModel">
+        </div>
+
+        <!--
+            Si ce n'est pas modifié ou valide c'est caché
+             On utilise name.valid pour y ajouer une class css-->
+        <div [hidden]="email.valid || email.pristine" class="card-panel red accent-1">
+          Adresse e-mail invalide
         </div>
 
         <!-- Roles -->
         <form class="form-group">
           <label for="types">Roles</label>
-          <p>
+          <p *ngFor="let role of user.roles">
             <label>
+              <!-- [checked] on pré-coche les types déjà renseignées
+              [disabled] on vient freezer certaines checkboxes si
+            les entrées ne respectent pas certaines règles (minimum 1 entrée
+            et pas plus de 3
+            (change) on réagit avec la méthode selectType)-->
               <input type="checkbox" class="filled-in" />
-
+              <span [attr.for]="role">
+                <div>
+                  {{ role }}
+                </div>
+              </span>
             </label>
           </p>
         </form>
