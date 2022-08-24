@@ -3,8 +3,9 @@ export class User {
   firstname:string;
   lastname:string;
   email:string;
-  telephone:string;
+  telephone:number;
   roles:string[];
   password:string;
+
 
 }

@@ -23,7 +23,7 @@ export class EditUserComponent implements OnInit {
   ngOnInit(): void {
     //je récupère l'id depuis mon url
     const userId:string|null = this.route.snapshot.paramMap.get('id');
-    //je vais chercher le pokémon associé
+    //je vais chercher l'utilisateur associé
     if(userId) {
       this.userService.getUserById(+userId)
         .subscribe(user => this.user = user);

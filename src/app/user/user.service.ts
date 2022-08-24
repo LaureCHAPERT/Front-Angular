@@ -32,7 +32,13 @@ export class UserService {
       tap((response)=> this.log(response)),
       catchError((error)=>this.handleError(error,undefined))
       );
- }
+  }
+  getUserRoles():string[]{
+    return [
+       'ROLE_ADMIN',
+       'ROLE_USER',
+    ];
+  }
   private log(response: any) {
     console.table(response);
   }
@@ -41,5 +47,15 @@ export class UserService {
 
     return of (errorValue);
   }
+
+   updateUser(user:User) : Observable<null>{
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+    };
+    return this.http.put(`http://localhost:8000/api/user/update/${user.id}`, user, httpOptions).pipe(
+      tap((response)=> this.log(response)),
+      catchError((error)=>this.handleError(error, null))
+    )
+ }
 }
 
