@@ -60,17 +60,19 @@
         <!-- Roles -->
         <form class="form-group">
           <label for="roles">Roles</label>
-          <p *ngFor="let role of roles">
-            <label>
-              <input type="checkbox" class="filled-in" id="{{ role }}" [value]="role" [checked]="hasRole(role)"
-                [disabled]="!isRolesValid(role)" (change)="selectRole($event, role)" />
-              <span [attr.for]="role">
-                <div>
-                  {{ role }}
-                </div>
-              </span>
-            </label>
-          </p>
+          <div *ngIf="user">
+            <p *ngFor="let role of roles">
+              <label>
+                <input type="checkbox" class="filled-in" id="{{ role }}" [value]="role" [checked]="hasRole(role)"
+                  [disabled]="!isRolesValid(role)" (change)="selectRole($event, role)" />
+                <span [attr.for]="role">
+                  <div>
+                    {{ role }}
+                  </div>
+                </span>
+              </label>
+            </p>
+          </div>
         </form>
 
         <!-- Submit button -->

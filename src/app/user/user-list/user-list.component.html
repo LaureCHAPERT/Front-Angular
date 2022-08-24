@@ -22,7 +22,7 @@
         <td>{{user.telephone}}</td>
         <td>
           <a (click)="goToEditUser(user)" class="btn blue lighten-1 " style="marginLeft:5px"> Editer </a>
-          <a class="btn blue lighten-1" style="marginLeft:5px"> Supprimer</a>
+          <a (click)="deleteUser(user)" class="btn blue lighten-1" style="marginLeft:5px"> Supprimer</a>
         </td>
       </tr>
     </tbody>
