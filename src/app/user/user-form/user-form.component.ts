@@ -11,6 +11,7 @@ import { UserService } from '../user.service';
 export class UserFormComponent implements OnInit {
   @Input() user:User;
   roles:string[];
+  isAddForm:boolean;
 
   constructor(
     private userService: UserService,
@@ -19,6 +20,7 @@ export class UserFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.roles= this.userService.getUserRoles();
+    this.isAddForm = this.router.url.includes('add');
   }
   //on vérifie si l'utilisateur en question a un rôle ou non
   //afin de pré-cocher ou non un form
@@ -55,10 +57,15 @@ export class UserFormComponent implements OnInit {
     //sinon on laisse
     return true;
   }
-  //je redirige vers la page de l'utilisateur maintenant modifié
   onSubmit() {
-    this.userService.updateUser(this.user)
-      .subscribe(() => this.router.navigate(['/users']));
+    if(this.isAddForm) {
+      this.userService.addUser(this.user)
+      .subscribe((user: User)=> this.router.navigate(['/users']));
+    }else {
+      this.userService.updateUser(this.user)
+      .subscribe(() => this.router.navigate(['/users'])); 
+    }
+    
   }
 
 }

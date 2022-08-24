@@ -6,6 +6,4 @@ export class User {
   telephone:number;
   roles:string[];
   password:string;
-
-
 }

@@ -4,7 +4,7 @@ import { User } from 'src/app/user';
 @Component({
   selector: 'app-add-user',
   template: `
-    <h2 class="center">Ajouer un utilisateur</h2>
+    <h2 class="center">Ajouter un utilisateur</h2>
     <app-user-form [user]="user"></app-user-form>
   `,
 })

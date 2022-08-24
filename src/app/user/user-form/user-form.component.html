@@ -30,6 +30,8 @@
           Le nom de l'utilisateur requis (1-30).
         </div>
 
+    
+
         <!-- User phone -->
         <div class="form-group">
           <label for="phone">Téléphone</label>
@@ -64,7 +66,7 @@
             <p *ngFor="let role of roles">
               <label>
                 <input type="checkbox" class="filled-in" id="{{ role }}" [value]="role" [checked]="hasRole(role)"
-                  [disabled]="!isRolesValid(role)" (change)="selectRole($event, role)" />
+                [disabled]="!isRolesValid(role)" (change)="selectRole($event, role)" />
                 <span [attr.for]="role">
                   <div>
                     {{ role }}
