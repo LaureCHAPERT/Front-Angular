@@ -26,5 +26,14 @@ export class UserListComponent implements OnInit {
   goToEditUser(user: User) {
     this.router.navigate(['/edit/user', user.id]);
   }
+  goToUsersList() {
+    this.router.navigate(['/users']);
+  }
+  deleteUser(user:User) {
+    this.userService.deleteUserById(user.id)
+    .subscribe(() => this.goToUsersList() );
+    //on force le rafraichissement de la page après la suppression
+    window.location.reload();
+  }
 
 }

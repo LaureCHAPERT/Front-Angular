@@ -30,11 +30,29 @@
           Le nom de l'utilisateur requis (1-30).
         </div>
 
+        <!-- User password -->
+        <div *ngIf="isAddForm">
+          <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" class="form-control" id="password" required
+              pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" [(ngModel)]="user.password"
+              name="password" #password="ngModel">
+          </div>
+          <!--
+            Si ce n'est pas modifié ou valide c'est caché
+             On utilise name.valid pour y ajouer une class css-->
+          <div [hidden]="password.valid || password.pristine" class="card-panel red accent-1">
+            Le mot de passe doit contenir au minimum huit caractères, un chiffre et un caractère spécial.
+          </div>
+        </div>
+
+
+
         <!-- User phone -->
         <div class="form-group">
           <label for="phone">Téléphone</label>
-          <input type="number" class="form-control" id="phone" required pattern="^[0-9]{9}$"
-            [(ngModel)]="user.telephone" name="telephone" #telephone="ngModel">
+          <input type="text" class="form-control" id="phone" required pattern="^[0-9]{10}$" [(ngModel)]="user.telephone"
+            name="telephone" #telephone="ngModel">
         </div>
         <!--
             Si ce n'est pas modifié ou valide c'est caché
@@ -60,17 +78,19 @@
         <!-- Roles -->
         <form class="form-group">
           <label for="roles">Roles</label>
-          <p *ngFor="let role of roles">
-            <label>
-              <input type="checkbox" class="filled-in" id="{{ role }}" [value]="role" [checked]="hasRole(role)"
-                [disabled]="!isRolesValid(role)" (change)="selectRole($event, role)" />
-              <span [attr.for]="role">
-                <div>
-                  {{ role }}
-                </div>
-              </span>
-            </label>
-          </p>
+          <div *ngIf="user">
+            <p *ngFor="let role of roles">
+              <label>
+                <input type="checkbox" class="filled-in" id="{{ role }}" [value]="role" [checked]="hasRole(role)"
+                  [disabled]="!isRolesValid(role)" (change)="selectRole($event, role)" />
+                <span [attr.for]="role">
+                  <div>
+                    {{ role }}
+                  </div>
+                </span>
+              </label>
+            </p>
+          </div>
         </form>
 
         <!-- Submit button -->

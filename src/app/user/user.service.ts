@@ -47,7 +47,23 @@ export class UserService {
 
     return of (errorValue);
   }
-
+  addUser(user:User):Observable<null>{
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+    };
+    return this.http.post('http://localhost:8000/api/user/create', user, httpOptions).pipe(
+      tap((response)=> this.log(response)),
+      catchError((error)=>this.handleError(error, null))
+    )
+   }
+   deleteUserById (userId:number):Observable<number>{
+    let httpheaders=new HttpHeaders()
+    .set('Content-type','application/Json');
+    let options={
+      headers:httpheaders
+    };
+    return this.http.delete<number>(`http://localhost:8000/api/user/delete/${userId}`, options);
+  }
    updateUser(user:User) : Observable<null>{
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json'})
