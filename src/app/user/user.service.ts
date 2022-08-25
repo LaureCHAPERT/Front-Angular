@@ -47,11 +47,11 @@ export class UserService {
 
     return of (errorValue);
   }
-  addUser(user:User):Observable<User>{
+  addUser(user:User):Observable<null>{
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json'})
     };
-    return this.http.post<User>('http://localhost:8000/api/user/create', user, httpOptions).pipe(
+    return this.http.post('http://localhost:8000/api/user/create', user, httpOptions).pipe(
       tap((response)=> this.log(response)),
       catchError((error)=>this.handleError(error, null))
     )

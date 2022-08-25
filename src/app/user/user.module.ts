@@ -11,8 +11,9 @@ import { AddUserComponent } from './add-user/add-user.component';
 
 const userRoutes: Routes = [
   { path: 'edit/user/:id', component: EditUserComponent},
-  { path: 'users', component: UserListComponent },
   { path: 'user/add', component:AddUserComponent},
+  { path: 'users', component: UserListComponent },
+
 
 
 ]

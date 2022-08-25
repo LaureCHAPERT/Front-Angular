@@ -13,6 +13,7 @@ export class AddUserComponent implements OnInit {
   user:User;
 
   ngOnInit(): void {
+
     this.user = new User();
   }
 
