@@ -7,6 +7,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { AddUserComponent } from './add-user/add-user.component';
+import { LoaderComponent } from './loader/loader.component';
 
 
 const userRoutes: Routes = [
@@ -23,7 +24,8 @@ const userRoutes: Routes = [
     UserListComponent,
     UserFormComponent,
     EditUserComponent,
-    AddUserComponent
+    AddUserComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,

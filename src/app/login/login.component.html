@@ -7,16 +7,16 @@
       </div>
       <form #loginForm="ngForm">
         <div>
-          <label for="name">Name</label>
-          <input type="text" id="name" [(ngModel)]="name" name="name" required>
+          <label for="mail">Email</label>
+          <input type="text" id="email" [(ngModel)]="email" name="email" required>
         </div>
         <div>
-          <label for="password">Password</label>
+          <label for="password">Mot de passe</label>
           <input type="password" id="password" [(ngModel)]="password" name="password" required>
         </div>
       </form>
       <div class="card-action center">
-        <a class="waves-effect waves-light blue lighten-1 btn" style="marginLeft:5px">Se connecter</a>
+        <a (click)="login()" class="waves-effect waves-light blue lighten-1 btn" style="marginLeft:5px">Se connecter</a>
         <a class=" waves-effect waves-light blue lighten-1 btn" style="marginLeft:5px">Se déconnecter</a>
       </div>
     </div>
