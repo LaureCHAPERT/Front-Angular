@@ -18,7 +18,7 @@ export class LoginService {
 
   login(email:string, password:string){
     const loginData = {
-      email: email,
+      email:email,
       password: password,
     };
     return new Observable<boolean>((observer)=> {
@@ -26,6 +26,8 @@ export class LoginService {
         observer.next(true);
         observer.complete();
         this.isLoggedIn = true;
+        console.log(JSON.stringify(result));
+        localStorage.setItem('user', JSON.stringify(result));
       }, error => {
         observer.error(false);
         observer.complete();

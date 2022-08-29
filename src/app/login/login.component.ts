@@ -10,6 +10,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   ]
 })
 export class LoginComponent implements OnInit {
+  message:string = "Vous êtes déconnecté";
   email:'';
   password:'';
   wrongCredentials=false;

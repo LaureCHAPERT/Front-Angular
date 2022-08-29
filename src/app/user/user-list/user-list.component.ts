@@ -19,7 +19,7 @@ export class UserListComponent implements OnInit {
       //on s'abonne à l'observable pour retourner notre liste
       this.userService.getUserList()
         .subscribe(userList => this.userList = userList);
-      console.log(this.userList);
+      //console.log(this.userList);
 
   }
 
