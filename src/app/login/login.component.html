@@ -3,7 +3,9 @@
     <div class="card hoverable">
       <div class="card-content center">
         <span class="card-title">Page de connexion</span>
-        <p><em>{{message}}</em></p>
+      </div>
+      <div *ngIf="wrongCredentials" class="red-text center error-message">
+        <p>Nom d'utilisateur ou mot de passe incorrect</p>
       </div>
       <form #loginForm="ngForm">
         <div>
