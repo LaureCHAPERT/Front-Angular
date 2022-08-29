@@ -8,12 +8,13 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { LoaderComponent } from './loader/loader.component';
+import { AuthGuard } from '../auth.guard';
 
 
 const userRoutes: Routes = [
-  { path: 'edit/user/:id', component: EditUserComponent},
-  { path: 'user/add', component:AddUserComponent},
-  { path: 'users', component: UserListComponent },
+  { path: 'edit/user/:id', component: EditUserComponent, canActivate: [AuthGuard]},
+  { path: 'user/add', component:AddUserComponent, canActivate: [AuthGuard]},
+  { path: 'users', component: UserListComponent, canActivate: [AuthGuard] },
 
 
 

@@ -25,9 +25,11 @@ export class LoginService {
       this.httpClient.post(this.LOGIN_URL, loginData).subscribe(result=>{
         observer.next(true);
         observer.complete();
+        this.isLoggedIn = true;
       }, error => {
         observer.error(false);
         observer.complete();
+        this.isLoggedIn = false;
       })
     })
   }
